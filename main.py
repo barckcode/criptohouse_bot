@@ -3,7 +3,8 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
 
 # Internal Modules
-from commands.start import start_handler
+from commands.start import start_command, currency_buttons
+from commands.help import help_command
 
 
 updater = Updater(
@@ -15,7 +16,9 @@ dispatcher = updater.dispatcher
 
 
 # Commands List
-dispatcher.add_handler(start_handler)
+dispatcher.add_handler(start_command)
+dispatcher.add_handler(currency_buttons)
+dispatcher.add_handler(help_command)
 
 
 # def echo(update, context):
