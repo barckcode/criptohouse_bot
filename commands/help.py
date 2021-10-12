@@ -7,7 +7,7 @@ def help(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     context.bot.send_message(
         chat_id=chat_id,
-        text='Help text for user ...',
+        text='🤖 CriptoHouse:\n\nHelp text for user ...',
         )
 
 
