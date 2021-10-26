@@ -3,12 +3,13 @@ from telegram.update import Update
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram.ext.callbackcontext import CallbackContext
 
+# Internal Modules
+from api.get_all_currencies import all_currencies
+from api.get_all_criptos import all_criptos
+
 
 # Currency Buttons
-list_of_currencies = {
-    "Dolares": "usd",
-    "Euros": "eur",
-}
+list_of_currencies = all_currencies()
 
 currency_list_buttons = []
 
@@ -16,23 +17,12 @@ for currency, identifier in list_of_currencies.items():
     currency_list_buttons.append(
         [InlineKeyboardButton(f"{currency} ({identifier.upper()})", callback_data=f"{identifier}")]
     )
-    # InlineKeyboardButton("Dólares (USD)", callback_data='usd'),
-    # InlineKeyboardButton("Euros (EUR)", callback_data='eur')
 
 currency_markup = InlineKeyboardMarkup(currency_list_buttons)
 
 
 # Cripto Buttons
-list_of_criptos = {
-    "Bitcoin": "btc",
-    "Ethereum": "eth",
-    "Cardano": "ada",
-    "Ripple": "xrp",
-    "Solana": "sol",
-    "Dogecoin": "doge",
-    "Terra-luna": "luna",
-    "Shiba-inu": "shib",
-}
+list_of_criptos = all_criptos()
 
 cripto_list_buttons = []
 
